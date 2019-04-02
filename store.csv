@@ -1,0 +1,6 @@
+﻿id,sales,id_session,coupon
+1a,3,1,true
+2a,1,1,true
+3a,2,1,false
+1b,3,2,true
+1c,4,3,false
