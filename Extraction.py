@@ -20,10 +20,13 @@ def Extraer():
 ### 0.- ERROR HANDLER
 def Loop():
     try:
+        inpp = input('First Update. Continue? (anykey == yes/no)... ')
+        if inpp == 'no':
+            os._exit(1)
         os.listdir(server)
         Extraer()
     except:
-        inp = input('\nUpdate? (anykey == yes/no)...')
+        inp = input('\nNot working. Update? (anykey == yes/no)... ')
         if inp == 'no':
             exit()
         while True:
