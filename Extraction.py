@@ -1,6 +1,5 @@
 import os
 from os import system as cmd
-from sys import exit
 
 server = '//10.109.10.140/InventariosCC'
 
@@ -25,7 +24,7 @@ def Loop():
         Extraer()
     except:
         inp = input('\nUpdate? (anykey == yes/no)...')
-        if inp == 'no': 
+        if inp == 'no':
             exit()
         while True:
             Loop()
