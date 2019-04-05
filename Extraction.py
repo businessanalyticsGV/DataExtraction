@@ -3,11 +3,14 @@ from os import system as cmd
 from datetime import datetime as dt
 from datetime import timedelta as td
 
+path = os.getcwd().replace('\\','/')+'/'
+path = 'C:/Users/alexisalvarez/OneDrive - Grupo Vidanta/UPDATE/Work/00. QVDs/Extraction/DataExtraction/'
+
 #### 0.- UPDATE DATE HANDLER
 yesterday = dt.today()+td(days = -1)
 yesterday = yesterday.strftime('%d/%m/%Y')
 
-file = open('date.txt','r')
+file = open(path+'date.txt','r')
 date = file.read()
 file.close()
 
@@ -29,7 +32,7 @@ def Extraer():
     cmd(qvdExe+qvdQVW)
 
     ######## PASSING YESTERDAY
-    file = open('date.txt','w')
+    file = open(path+'date.txt','w')
     file.write(yesterday)
     file.close()
 
