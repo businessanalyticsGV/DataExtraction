@@ -1,9 +1,23 @@
 import os
 from os import system as cmd
+from datetime import datetime as dt
+from datetime import timedelta as td
 
-server = '//10.109.10.140/InventariosCC'
+#### 0.- UPDATE DATE HANDLER
+yesterday = dt.today()+td(days = -1)
+yesterday = yesterday.strftime('%d/%m/%Y')
+
+file = open('date.txt','r')
+date = file.read()
+file.close()
+
+if date == yesterday:
+    print('Already updated')
+    exit()
 
 ### 1.- QLIKVIEW WITH COMMAND LINE
+server = '//10.109.10.140/InventariosCC'
+
 def Extraer():
 
     print('\nExtracting...')
@@ -14,6 +28,12 @@ def Extraer():
 
     cmd(qvdExe+qvdQVW)
 
+    ######## PASSING YESTERDAY
+    file = open('date.txt','w')
+    file.write(yesterday)
+    file.close()
+
+    #############################################
     print('\nFinished...')
     os._exit(1)
 
@@ -26,7 +46,7 @@ def Loop():
         os.listdir(server)
         Extraer()
     except:
-        inp = input('\nNot working. Update? (anykey == yes/no)... ')
+        inp = input('\nNot in line. Update? (anykey == yes/no)... ')
         if inp == 'no':
             exit()
         while True:
